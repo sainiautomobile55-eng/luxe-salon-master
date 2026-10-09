@@ -1,0 +1,1226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212">
+  <meta name="description" content="LUXÉ Unisex Salon & Academy — premium hair, skin, nail, bridal and beauty training services.">
+  <title>LUXÉ | Unisex Salon & Academy</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            luxegold: "#D4AF37",
+            luxeblack: "#121212"
+          },
+          fontFamily: {
+            sans: ["Montserrat", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --bg: #121212;
+      --panel: #191919;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #f5f5f5;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    h1, h2, h3, .lux-title {
+      font-family: "Playfair Display", serif;
+    }
+
+    .gold-text { color: var(--gold); }
+
+    .section-wrap {
+      width: min(1200px, 92%);
+      margin: auto;
+    }
+
+    .section-space { padding: 72px 0; }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* Rounded buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 13px 22px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .btn-gold {
+      color: #111;
+      background: linear-gradient(135deg, #f0d477, #c59a2b);
+      box-shadow: 0 5px 18px rgba(212,175,55,.12);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #ffe99a, #d4af37);
+      box-shadow: 0 8px 25px rgba(212,175,55,.22);
+    }
+
+    .btn-outline {
+      color: #fff;
+      background: transparent;
+      border-color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .btn-small {
+      min-height: 40px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 11px;
+    }
+
+    /* Navigation */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(18,18,18,.96);
+      border-bottom: 1px solid rgba(212,175,55,.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 35px;
+      line-height: 1;
+      letter-spacing: 3px;
+    }
+
+    .nav-link {
+      color: #ddd;
+      font-size: 12px;
+      transition: color .2s;
+    }
+
+    .nav-link:hover { color: var(--gold); }
+
+    /* Hero image */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background-color: #171411;
+      background-image:
+        linear-gradient(90deg,
+          rgba(12,12,12,.96) 0%,
+          rgba(12,12,12,.84) 42%,
+          rgba(12,12,12,.25) 100%),
+        url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1800&q=85");
+      background-position: center, center 35%;
+      background-size: cover;
+    }
+
+    .hero-inner {
+      min-height: 490px;
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 700px;
+      margin: 22px 0;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      max-width: 480px;
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* Cards */
+    .panel {
+      overflow: hidden;
+      background: linear-gradient(145deg, #1c1c1c, #141414);
+      border: 1px solid #39352a;
+      border-radius: 16px;
+      transition: border-color .3s, transform .3s;
+    }
+
+    .panel:hover {
+      border-color: rgba(212,175,55,.8);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,.65);
+      border-radius: 14px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #303030;
+      font-size: 12px;
+    }
+
+    .price-row:last-child { border-bottom: 0; }
+    .price-row span:first-child { color: #ddd; }
+    .price-row span:last-child {
+      color: var(--gold);
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    /* Bridal image banner */
+    .package-banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 240px;
+      overflow: hidden;
+      border: 1px solid var(--gold);
+      border-radius: 16px;
+      background-color: #171411;
+      background-image:
+        linear-gradient(90deg,
+          rgba(15,15,15,.30),
+          rgba(15,15,15,.92) 48%,
+          rgba(15,15,15,.97)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1500&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Academy and gallery images */
+    .image-frame {
+      position: relative;
+      overflow: hidden;
+      background: #24211b;
+    }
+
+    .course-image {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #24211b;
+    }
+
+    .course-content { padding: 22px; }
+
+    .course-meta {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 8px;
+      margin: 17px 0;
+      color: #aaa;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .course-meta strong {
+      color: #eee;
+      font-weight: 500;
+    }
+
+    .portfolio-img {
+      display: block;
+      width: 100%;
+      height: 205px;
+      object-fit: cover;
+      background: #24211b;
+      border: 1px solid #343434;
+      border-radius: 12px;
+      transition: transform .3s, border-color .3s;
+    }
+
+    .portfolio-img:hover {
+      transform: scale(1.025);
+      border-color: var(--gold);
+    }
+
+    /* Booking form */
+    .booking-panel {
+      padding: clamp(22px, 4vw, 42px);
+      border: 1px solid rgba(212,175,55,.65);
+      border-radius: 18px;
+      background: linear-gradient(130deg, #1b1b1b, #111);
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ddd;
+      font-size: 11px;
+    }
+
+    .form-control {
+      width: 100%;
+      min-height: 45px;
+      padding: 12px;
+      color: #f5f5f5;
+      background: #101010;
+      border: 1px solid #424242;
+      border-radius: 12px;
+      outline: none;
+      font-family: inherit;
+      font-size: 12px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,.1);
+    }
+
+    .form-control option {
+      color: white;
+      background: #191919;
+    }
+
+    input[type="date"], input[type="time"] {
+      color-scheme: dark;
+    }
+
+    .mode-button {
+      padding: 11px 16px;
+      color: #ddd;
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 13px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .mode-button.active {
+      color: #111;
+      background: var(--gold);
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0e0e0e;
+      border-top: 1px solid #333;
+    }
+
+    .footer a {
+      color: #bbb;
+      font-size: 11px;
+      transition: color .2s;
+    }
+
+    .footer a:hover { color: var(--gold); }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      color: var(--gold);
+      border: 1px solid #49402a;
+      border-radius: 12px;
+      transition: .2s;
+    }
+
+    .social-link:hover {
+      color: #111;
+      background: var(--gold);
+    }
+
+    /* Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.78);
+    }
+
+    .modal-backdrop.show { display: flex; }
+
+    .modal-box {
+      width: min(430px, 100%);
+      padding: 28px;
+      text-align: center;
+      background: #191919;
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    }
+
+    @media (max-width: 768px) {
+      .section-space { padding: 54px 0; }
+      .hero-inner { min-height: 430px; }
+
+      .hero {
+        background-image:
+          linear-gradient(90deg,
+            rgba(12,12,12,.93),
+            rgba(12,12,12,.65)),
+          url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80");
+      }
+
+      .package-banner {
+        background-image:
+          linear-gradient(rgba(12,12,12,.72), rgba(12,12,12,.92)),
+          url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80");
+      }
+
+      .course-image { height: 210px; }
+      .portfolio-img { height: 170px; }
+    }
+
+    @media (max-width: 480px) {
+      .section-wrap { width: 91%; }
+      .hero h1 { font-size: 2.7rem; }
+      .btn { padding: 12px 15px; font-size: 11px; }
+      .portfolio-img { height: 135px; }
+      .booking-panel { padding: 19px 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="section-wrap flex items-center justify-between gap-5 py-4">
+      <a href="#home" class="shrink-0" aria-label="LUXÉ Home">
+        <div class="logo">LUXÉ</div>
+        <div class="text-xs text-gray-400 mt-1">Unisex Salon & Academy</div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#academy">Academy</a>
+        <a class="nav-link" href="#portfolio">Portfolio</a>
+        <a class="nav-link" href="#booking">Book Now</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex gap-3">
+        <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i data-lucide="instagram" width="17"></i>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i data-lucide="facebook" width="17"></i>
+        </a>
+      </div>
+
+      <button id="menuToggle" class="btn btn-outline btn-small md:hidden" type="button" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu" width="19"></i>
+      </button>
+    </div>
+
+    <nav id="mobileNav" class="hidden md:hidden px-5 pb-5">
+      <div class="section-wrap flex flex-col gap-4">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#packages">Bridal Packages</a>
+        <a class="nav-link" href="#academy">Academy</a>
+        <a class="nav-link" href="#portfolio">Portfolio</a>
+        <a class="nav-link" href="#booking">Book Now</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="section-wrap hero-inner">
+        <div class="max-w-2xl">
+          <div class="eyebrow">Beauty · Grooming · Skills</div>
+          <h1>Redefining Luxury,<br>Style <span class="gold-text">&</span> Education</h1>
+          <p>
+            Premium salon services for everyone. World-class training
+            for future beauty professionals.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mt-7">
+            <a href="#booking" class="btn btn-gold">
+              Book Salon Appointment
+              <i data-lucide="arrow-right" width="17"></i>
+            </a>
+            <a href="#academy" class="btn btn-outline">
+              Explore Academy
+              <i data-lucide="arrow-right" width="17"></i>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-6 mt-9 text-xs text-gray-300">
+            <span class="flex items-center gap-2">
+              <i data-lucide="sparkles" class="gold-text" width="16"></i> Premium Care
+            </span>
+            <span class="flex items-center gap-2">
+              <i data-lucide="award" class="gold-text" width="16"></i> Professional Training
+            </span>
+            <span class="flex items-center gap-2">
+              <i data-lucide="heart" class="gold-text" width="16"></i> Personalised Service
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section-space">
+      <div class="section-wrap">
+        <div class="reveal mb-9">
+          <div class="eyebrow mb-3">Our Services</div>
+          <h2 class="section-heading">Our Services & Digital Rate Card</h2>
+          <p class="section-subtitle">Premium services. Transparent pricing. Exceptional results.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+          <article class="panel p-5 reveal">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="service-icon"><i data-lucide="scissors" width="25"></i></div>
+              <div>
+                <h3 class="text-2xl">Hair</h3>
+                <p class="text-xs text-gray-400 mt-1">CUT · COLOR · STYLE</p>
+              </div>
+            </div>
+            <div class="price-row"><span>Hair Cut (Women)</span><span>₹800</span></div>
+            <div class="price-row"><span>Hair Cut (Men)</span><span>₹600</span></div>
+            <div class="price-row"><span>Global Hair Color</span><span>₹2,500</span></div>
+            <div class="price-row"><span>Highlights</span><span>₹3,000</span></div>
+            <div class="price-row"><span>Keratin Treatment</span><span>₹4,000</span></div>
+            <a href="#booking" class="btn btn-outline btn-small w-full mt-5">Book Hair Service</a>
+          </article>
+
+          <article class="panel p-5 reveal">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="service-icon"><i data-lucide="flower-2" width="25"></i></div>
+              <div>
+                <h3 class="text-2xl">Skin</h3>
+                <p class="text-xs text-gray-400 mt-1">CLEANSE · TREAT · REJUVENATE</p>
+              </div>
+            </div>
+            <div class="price-row"><span>Facial (Basic)</span><span>₹1,500</span></div>
+            <div class="price-row"><span>Anti-Acne Facial</span><span>₹2,000</span></div>
+            <div class="price-row"><span>Brightening Facial</span><span>₹2,500</span></div>
+            <div class="price-row"><span>Hydra Facial</span><span>₹3,500</span></div>
+            <div class="price-row"><span>Skin Rejuvenation</span><span>₹4,000</span></div>
+            <a href="#booking" class="btn btn-outline btn-small w-full mt-5">Book Skin Service</a>
+          </article>
+
+          <article class="panel p-5 reveal">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="service-icon"><i data-lucide="hand" width="25"></i></div>
+              <div>
+                <h3 class="text-2xl">Nails</h3>
+                <p class="text-xs text-gray-400 mt-1">MANICURE · PEDICURE · ART</p>
+              </div>
+            </div>
+            <div class="price-row"><span>Classic Manicure</span><span>₹800</span></div>
+            <div class="price-row"><span>Classic Pedicure</span><span>₹1,000</span></div>
+            <div class="price-row"><span>Gel Polish</span><span>₹1,200</span></div>
+            <div class="price-row"><span>Nail Art</span><span>₹1,500</span></div>
+            <div class="price-row"><span>Gel Extensions</span><span>₹2,000</span></div>
+            <a href="#booking" class="btn btn-outline btn-small w-full mt-5">Book Nail Service</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BRIDAL PACKAGES -->
+    <section id="packages" class="pb-16">
+      <div class="section-wrap">
+        <div class="package-banner p-6 md:p-10 reveal">
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-center w-full">
+            <div class="max-w-xl">
+              <div class="eyebrow mb-3">Special Packages</div>
+              <h2 class="text-3xl md:text-4xl mb-4">Bridal & Groom Wedding Packages</h2>
+              <p class="text-sm leading-7 text-gray-300">
+                Make your special day memorable with personalised bridal
+                and groom styling services.
+              </p>
+            </div>
+            <a href="#booking" class="btn btn-gold justify-self-start md:justify-self-end">
+              View Packages <i data-lucide="arrow-right" width="17"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <article class="panel p-6 reveal">
+            <div class="service-icon mb-4"><i data-lucide="heart" width="24"></i></div>
+            <h3 class="text-2xl mb-2">Bridal Glow Package</h3>
+            <p class="text-sm text-gray-400 leading-6">
+              Bridal makeup, hairstyling and a personalised beauty consultation.
+            </p>
+            <div class="text-xs gold-text mt-4">Price on consultation</div>
+            <a href="#booking" class="btn btn-outline btn-small mt-5">Enquire Now</a>
+          </article>
+
+          <article class="panel p-6 reveal">
+            <div class="service-icon mb-4"><i data-lucide="user-round" width="24"></i></div>
+            <h3 class="text-2xl mb-2">Groom Signature Package</h3>
+            <p class="text-sm text-gray-400 leading-6">
+              Grooming and hairstyling tailored to your special occasion.
+            </p>
+            <div class="text-xs gold-text mt-4">Price on consultation</div>
+            <a href="#booking" class="btn btn-outline btn-small mt-5">Enquire Now</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMY -->
+    <section id="academy" class="section-space bg-black/20">
+      <div class="section-wrap">
+        <div class="reveal mb-9">
+          <div class="eyebrow mb-3">Learn With LUXÉ</div>
+          <h2 class="section-heading">Academy Courses</h2>
+          <p class="section-subtitle">Learn. Practise. Build Your Future.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+          <article class="panel reveal">
+            <div class="image-frame">
+              <img class="course-image reliable-image" loading="lazy"
+                src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=800&q=80"
+                data-fallback="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
+                alt="Professional hairstyling in a salon">
+            </div>
+            <div class="course-content">
+              <div class="flex gap-3 items-center">
+                <i data-lucide="scissors" class="gold-text shrink-0" width="24"></i>
+                <h3 class="text-xl">Professional Hair Styling</h3>
+              </div>
+              <div class="course-meta">
+                <span>Duration</span><strong>3 Months</strong>
+                <span>Fee</span><strong>₹3,000/month</strong>
+                <span>Feature</span><strong>Live model practice</strong>
+              </div>
+              <button type="button" class="btn btn-gold w-full course-enquire" data-course="Professional Hair Styling Course">
+                Enquire Now <i data-lucide="arrow-right" width="16"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="panel reveal">
+            <div class="image-frame">
+              <img class="course-image reliable-image" loading="lazy"
+                src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80"
+                data-fallback="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80"
+                alt="Makeup artistry and beauty training">
+            </div>
+            <div class="course-content">
+              <div class="flex gap-3 items-center">
+                <i data-lucide="brush" class="gold-text shrink-0" width="24"></i>
+                <h3 class="text-xl">Advanced Makeup Artistry</h3>
+              </div>
+              <div class="course-meta">
+                <span>Duration</span><strong>3 Months</strong>
+                <span>Fee</span><strong>₹3,000/month</strong>
+                <span>Feature</span><strong>Bridal & HD makeup</strong>
+              </div>
+              <button type="button" class="btn btn-gold w-full course-enquire" data-course="Advanced Makeup Artistry Course">
+                Enquire Now <i data-lucide="arrow-right" width="16"></i>
+              </button>
+            </div>
+          </article>
+
+          <article class="panel reveal">
+            <div class="image-frame">
+              <img class="course-image reliable-image" loading="lazy"
+                src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=80"
+                data-fallback="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80"
+                alt="Relaxing beauty and spa treatment">
+            </div>
+            <div class="course-content">
+              <div class="flex gap-3 items-center">
+                <i data-lucide="flower-2" class="gold-text shrink-0" width="24"></i>
+                <h3 class="text-xl">Hair Spa & Advanced Therapy</h3>
+              </div>
+              <div class="course-meta">
+                <span>Duration</span><strong>1 Month</strong>
+                <span>Fee</span><strong>₹3,000</strong>
+                <span>Feature</span><strong>Scalp care & product knowledge</strong>
+              </div>
+              <button type="button" class="btn btn-gold w-full course-enquire" data-course="Hair Spa & Advanced Therapy Course">
+                Enquire Now <i data-lucide="arrow-right" width="16"></i>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section-space">
+      <div class="section-wrap">
+        <div class="flex flex-wrap items-end justify-between gap-5 mb-8 reveal">
+          <div>
+            <div class="eyebrow mb-3">Our Work</div>
+            <h2 class="section-heading">Our Portfolio</h2>
+            <p class="section-subtitle">Beauty inspiration. Creative styling. Personal expression.</p>
+          </div>
+          <a href="#booking" class="btn btn-outline btn-small">
+            Book Your Look <i data-lucide="arrow-right" width="15"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <img class="portfolio-img reliable-image reveal" loading="lazy"
+            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80"
+            data-fallback="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=500&q=80"
+            alt="Salon hairstyling">
+
+          <img class="portfolio-img reliable-image reveal" loading="lazy"
+            src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=500&q=80"
+            data-fallback="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80"
+            alt="Hair salon styling">
+
+          <img class="portfolio-img reliable-image reveal" loading="lazy"
+            src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=500&q=80"
+            data-fallback="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=500&q=80"
+            alt="Makeup artistry">
+
+          <img class="portfolio-img reliable-image reveal" loading="lazy"
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=500&q=80"
+            data-fallback="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=500&q=80"
+            alt="Men's grooming">
+
+          <img class="portfolio-img reliable-image reveal" loading="lazy"
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=80"
+            data-fallback="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=500&q=80"
+            alt="Nail art">
+
+          <img class="portfolio-img reliable-image reveal" loading="lazy"
+            src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=80"
+            data-fallback="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=500&q=80"
+            alt="Skincare treatment">
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking" class="pb-20">
+      <div class="section-wrap">
+        <div class="booking-panel reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-[.8fr_1.2fr] gap-10">
+
+            <div>
+              <div class="eyebrow mb-3">Booking & Enquiry</div>
+              <h2 class="text-4xl md:text-5xl leading-tight mb-5">
+                Your Next<br><span class="gold-text">Beauty Experience</span>
+              </h2>
+              <p class="text-sm text-gray-400 leading-7">
+                Choose your salon service or academy course and tell us
+                your preferences using the form.
+              </p>
+              <div class="mt-8 space-y-4 text-sm text-gray-300">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="check-circle" class="gold-text" width="18"></i>
+                  Personalised consultation
+                </div>
+                <div class="flex items-center gap-3">
+                  <i data-lucide="check-circle" class="gold-text" width="18"></i>
+                  Salon and academy enquiries
+                </div>
+                <div class="flex items-center gap-3">
+                  <i data-lucide="check-circle" class="gold-text" width="18"></i>
+                  Appointment requests
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-3 mb-7">
+                <button type="button" class="mode-button active" id="salonMode">
+                  Book Salon Appointment
+                </button>
+                <button type="button" class="mode-button" id="academyMode">
+                  Enquire for Academy Course
+                </button>
+              </div>
+
+              <form id="bookingForm">
+                <input type="hidden" id="bookingType" name="bookingType" value="Salon Appointment">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label class="form-label" for="fullName">Full Name *</label>
+                    <input class="form-control" id="fullName" name="fullName"
+                      placeholder="Enter your full name" autocomplete="name" required>
+                  </div>
+
+                  <div>
+                    <label class="form-label" for="phone">Phone Number *</label>
+                    <input class="form-control" id="phone" name="phone" type="tel"
+                      inputmode="tel" autocomplete="tel" placeholder="Enter phone number"
+                      pattern="[0-9+() -]{7,20}" required>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label class="form-label" for="service">Service / Course Selection *</label>
+                    <select class="form-control" id="service" name="service" required>
+                      <option value="">Select a service or course</option>
+                    </select>
+                  </div>
+
+                  <div id="dateField">
+                    <label class="form-label" for="appointmentDate">Preferred Date *</label>
+                    <input class="form-control" type="date" id="appointmentDate" name="appointmentDate" required>
+                  </div>
+
+                  <div id="timeField">
+                    <label class="form-label" for="appointmentTime">Preferred Time *</label>
+                    <input class="form-control" type="time" id="appointmentTime" name="appointmentTime" required>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label class="form-label" for="notes">Additional Message (Optional)</label>
+                    <textarea class="form-control" id="notes" name="notes" rows="3"
+                      placeholder="Tell us about your preferences..."></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-gold w-full mt-6">
+                  Prepare My Request <i data-lucide="arrow-right" width="17"></i>
+                </button>
+
+                <p class="text-xs text-gray-500 leading-5 mt-4">
+                  Demo form only. Requests are not sent or saved until you connect
+                  a real booking service, email, WhatsApp or backend.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="footer pt-12">
+    <div class="section-wrap">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-9 pb-10">
+
+        <div>
+          <a href="#home" class="inline-block">
+            <div class="logo">LUXÉ</div>
+            <div class="text-xs text-gray-400 mt-2">Unisex Salon & Academy</div>
+          </a>
+          <p class="text-xs text-gray-500 leading-6 mt-5">
+            Beauty, grooming and professional education with a touch of luxury.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl mb-5">Contact Us</h3>
+          <div class="space-y-4 text-xs text-gray-400">
+            <p class="flex items-start gap-3">
+              <i data-lucide="phone" class="gold-text shrink-0" width="17"></i>
+              Add your salon phone number
+            </p>
+            <p class="flex items-start gap-3">
+              <i data-lucide="mail" class="gold-text shrink-0" width="17"></i>
+              Add your business email
+            </p>
+            <p class="flex items-start gap-3">
+              <i data-lucide="map-pin" class="gold-text shrink-0" width="17"></i>
+              Add your salon address
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl mb-5">Working Hours</h3>
+          <div class="space-y-3 text-xs text-gray-400">
+            <p class="flex items-center gap-3">
+              <i data-lucide="clock" class="gold-text" width="17"></i>
+              Monday – Sunday
+            </p>
+            <p>10:00 AM – 6:00 PM</p>
+            <p class="text-gray-500 leading-5">Replace with your actual business hours.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl mb-5">Follow Us</h3>
+          <p class="text-xs text-gray-400 leading-6 mb-4">
+            Follow LUXÉ for beauty inspiration, updates and academy news.
+          </p>
+          <div class="flex gap-3">
+            <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i data-lucide="instagram" width="18"></i>
+            </a>
+            <a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i data-lucide="facebook" width="18"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 py-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-gray-500">
+        <p>© <span id="year"></span> LUXÉ Unisex Salon & Academy. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#services">Beauty</a>
+          <a href="#services">Grooming</a>
+          <a href="#academy">Education</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CONFIRMATION MODAL -->
+  <div class="modal-backdrop" id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div class="service-icon mx-auto mb-5">
+        <i data-lucide="clipboard-check" width="25"></i>
+      </div>
+      <h2 class="text-3xl mb-3" id="modalTitle">Request Prepared</h2>
+      <p class="text-sm text-gray-400 leading-7 mb-5">
+        Review your details below. This demo has not sent your information to the salon.
+      </p>
+      <div id="requestSummary" class="text-left text-sm text-gray-300 space-y-3 mb-6"></div>
+      <button type="button" class="btn btn-gold w-full" id="closeModal">Back to Website</button>
+    </div>
+  </div>
+
+  <script>
+    // Icons
+    function renderIcons() {
+      if (window.lucide) lucide.createIcons();
+    }
+    renderIcons();
+
+    // Image fallback: if the first URL fails, try the second.
+    document.querySelectorAll(".reliable-image").forEach(img => {
+      img.addEventListener("error", function () {
+        const fallback = this.dataset.fallback;
+
+        if (fallback && this.src !== fallback) {
+          this.src = fallback;
+        } else {
+          this.style.visibility = "hidden";
+        }
+      });
+    });
+
+    // Navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      const isNowHidden = mobileNav.classList.toggle("hidden");
+      menuToggle.setAttribute("aria-expanded", String(!isNowHidden));
+      menuToggle.setAttribute("aria-label", isNowHidden ? "Open menu" : "Close menu");
+      menuToggle.innerHTML = isNowHidden
+        ? '<i data-lucide="menu" width="19"></i>'
+        : '<i data-lucide="x" width="19"></i>';
+      renderIcons();
+    });
+
+    document.querySelectorAll("#mobileNav a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.add("hidden");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i data-lucide="menu" width="19"></i>';
+        renderIcons();
+      });
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add("visible"));
+    }
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Booking form setup
+    const salonMode = document.getElementById("salonMode");
+    const academyMode = document.getElementById("academyMode");
+    const bookingType = document.getElementById("bookingType");
+    const serviceSelect = document.getElementById("service");
+    const dateField = document.getElementById("dateField");
+    const timeField = document.getElementById("timeField");
+    const appointmentDate = document.getElementById("appointmentDate");
+    const appointmentTime = document.getElementById("appointmentTime");
+
+    const salonGroups = [
+      {
+        label: "Hair Services",
+        items: ["Hair Cut (Women)", "Hair Cut (Men)", "Global Hair Color", "Highlights", "Keratin Treatment"]
+      },
+      {
+        label: "Skin Services",
+        items: ["Facial (Basic)", "Anti-Acne Facial", "Brightening Facial", "Hydra Facial", "Skin Rejuvenation"]
+      },
+      {
+        label: "Nail Services",
+        items: ["Classic Manicure", "Classic Pedicure", "Gel Polish", "Nail Art", "Gel Extensions"]
+      },
+      {
+        label: "Special Packages",
+        items: ["Bridal Glow Package", "Groom Signature Package"]
+      }
+    ];
+
+    const academyGroups = [
+      {
+        label: "Academy Courses",
+        items: [
+          "Professional Hair Styling Course",
+          "Advanced Makeup Artistry Course",
+          "Hair Spa & Advanced Therapy Course"
+        ]
+      }
+    ];
+
+    function setBookingMode(mode) {
+      const isAcademy = mode === "academy";
+
+      bookingType.value = isAcademy ? "Academy Course Enquiry" : "Salon Appointment";
+      salonMode.classList.toggle("active", !isAcademy);
+      academyMode.classList.toggle("active", isAcademy);
+
+      dateField.classList.toggle("hidden", isAcademy);
+      timeField.classList.toggle("hidden", isAcademy);
+      appointmentDate.required = !isAcademy;
+      appointmentTime.required = !isAcademy;
+
+      serviceSelect.replaceChildren();
+
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = isAcademy
+        ? "Select an academy course"
+        : "Select a salon service";
+      serviceSelect.appendChild(placeholder);
+
+      const groups = isAcademy ? academyGroups : salonGroups;
+
+      groups.forEach(groupData => {
+        const group = document.createElement("optgroup");
+        group.label = groupData.label;
+
+        groupData.items.forEach(item => {
+          const option = document.createElement("option");
+          option.value = item;
+          option.textContent = item;
+          group.appendChild(option);
+        });
+
+        serviceSelect.appendChild(group);
+      });
+    }
+
+    salonMode.addEventListener("click", () => setBookingMode("salon"));
+    academyMode.addEventListener("click", () => setBookingMode("academy"));
+
+    // Course buttons preselect the relevant course
+    document.querySelectorAll(".course-enquire").forEach(button => {
+      button.addEventListener("click", () => {
+        setBookingMode("academy");
+        serviceSelect.value = button.dataset.course;
+        document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // Minimum booking date: today
+    const now = new Date();
+    appointmentDate.min = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, "0"),
+      String(now.getDate()).padStart(2, "0")
+    ].join("-");
+
+    // Demo form modal
+    const bookingForm = document.getElementById("bookingForm");
+    const modal = document.getElementById("confirmationModal");
+    const requestSummary = document.getElementById("requestSummary");
+    const closeModal = document.getElementById("closeModal");
+
+    bookingForm.addEventListener("submit", event => {
+      event.preventDefault();
+      if (!bookingForm.reportValidity()) return;
+
+      const data = new FormData(bookingForm);
+      const isAcademy = data.get("bookingType") === "Academy Course Enquiry";
+
+      const details = [
+        ["Request type", data.get("bookingType")],
+        ["Name", data.get("fullName")],
+        ["Phone", data.get("phone")],
+        [isAcademy ? "Course" : "Service", data.get("service")]
+      ];
+
+      if (!isAcademy) {
+        details.push(["Date", data.get("appointmentDate")]);
+        details.push(["Time", data.get("appointmentTime")]);
+      }
+
+      if (data.get("notes")) {
+        details.push(["Message", data.get("notes")]);
+      }
+
+      requestSummary.replaceChildren();
+
+      details.forEach(([label, value]) => {
+        const row = document.createElement("div");
+        row.className = "border-b border-white/10 pb-2";
+
+        const title = document.createElement("span");
+        title.className = "block text-xs text-gray-500 mb-1";
+        title.textContent = label;
+
+        const content = document.createElement("span");
+        content.className = "block break-words";
+        content.textContent = value || "Not provided";
+
+        row.append(title, content);
+        requestSummary.appendChild(row);
+      });
+
+      modal.classList.add("show");
+      closeModal.focus();
+    });
+
+    function hideModal() {
+      modal.classList.remove("show");
+    }
+
+    closeModal.addEventListener("click", hideModal);
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) hideModal();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && modal.classList.contains("show")) {
+        hideModal();
+      }
+    });
+  </script>
+</body>
+</html>
